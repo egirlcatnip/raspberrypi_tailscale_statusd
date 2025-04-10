@@ -1,0 +1,16 @@
+[Unit]
+Description=Tailscale Check and LED Control
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 tailscale_statusd
+Restart=on-failure
+RestartSec=5
+User=root
+Environment=PYTHONUNBUFFERED=1
+
+TimeoutStartSec=5s
+TimeoutStopSec=5s
+
+[Install]
+WantedBy=multi-user.target
